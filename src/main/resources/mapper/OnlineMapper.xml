@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mcp.online.mapper.OnlineMapper">
+
+    <resultMap id="BaseResultMap" type="com.mcp.online.model.Online">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="number" property="number"/>
+        <result column="term" property="term"/>
+        <result column="prize" property="prize"/>
+        <result column="change_num" property="changeNum"/>
+        <result column="time" property="time"/>
+    </resultMap>
+
+
+    <select id="getFinalOnline" resultMap="BaseResultMap">
+        select * from online order by id desc limit 1
+    </select>
+
+
+    <select id="getNoneTermOnline" resultMap="BaseResultMap">
+        select * from online where term='' order by id desc limit 30
+    </select>
+
+
+</mapper>
